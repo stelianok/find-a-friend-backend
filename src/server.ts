@@ -1,9 +1,10 @@
-import Fastify from 'fastify';
+import { env } from './env';
+import { app } from './app';
 
-const fastify = Fastify({
-  logger: true
+app.listen({
+  host: '0.0.0.0',
+  port: env.PORT,
 })
-
-fastify.get('/', function (request, reply) {
-  reply.send({ hello: 'world' });
-});
+  .then(() => {
+    console.log('HTTP server running!');
+  })
