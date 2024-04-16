@@ -6,7 +6,7 @@ interface OrgParams {
   orgId: string;
 }
 // /orgId/pets/
-export async function register(request: FastifyRequest<{ Params: OrgParams }>, reply: FastifyReply) {
+export async function registerPet(request: FastifyRequest<{ Params: OrgParams }>, reply: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string().max(256),
     description: z.string().max(800),
