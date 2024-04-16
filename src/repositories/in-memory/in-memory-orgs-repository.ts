@@ -3,6 +3,7 @@ import { OrgsRepository } from "../orgs-repository";
 
 export class InMemoryOrgsRepository implements OrgsRepository {
 
+
   public orgs: Org[] = [];
 
   async create(data: Prisma.OrgCreateInput) {
@@ -19,6 +20,16 @@ export class InMemoryOrgsRepository implements OrgsRepository {
     }
 
     this.orgs.push(org);
+
+    return org;
+  }
+
+  async findById(id: string) {
+    const org = this.orgs.find((org) => org.id === id);
+
+    if (!org) {
+      return null
+    }
 
     return org;
   }
