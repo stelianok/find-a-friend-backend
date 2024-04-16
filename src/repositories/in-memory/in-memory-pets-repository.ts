@@ -1,7 +1,7 @@
 import { Pet, Prisma } from "@prisma/client";
 import { PetsRepository } from "../pets-repository";
 
-export default class InMemoryPetsRepository implements PetsRepository {
+export class InMemoryPetsRepository implements PetsRepository {
   private pets: Pet[] = [];
 
   async create(data: Prisma.PetCreateInput) {
