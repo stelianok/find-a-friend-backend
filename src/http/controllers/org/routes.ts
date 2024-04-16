@@ -4,6 +4,6 @@ import { profile } from "./profile";
 
 export async function orgsRoutes(app: FastifyInstance) {
   app.post('/orgs', register);
-  app.get('/orgs', profile);
+  app.post('/me', profile);
 
 }
