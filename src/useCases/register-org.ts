@@ -29,6 +29,12 @@ export class registerOrgUseCase {
       throw new Error();
     }
 
+    const orgWithSamePhone = await this.orgsRepository.findByPhone(phone);
+
+    if (orgWithSamePhone) {
+      throw new Error();
+    }
+
     const org = await this.orgsRepository.create({
       name,
       email,

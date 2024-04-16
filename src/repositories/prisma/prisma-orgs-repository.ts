@@ -20,4 +20,14 @@ export class PrismaOrgsRepository implements OrgsRepository {
 
     return org;
   }
+
+  async findByPhone(phone: string) {
+    const org = await prisma.org.findUnique({
+      where: {
+        phone
+      }
+    })
+
+    return org;
+  }
 }

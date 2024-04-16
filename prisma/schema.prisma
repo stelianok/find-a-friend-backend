@@ -36,7 +36,7 @@ model Org {
   address       String
   state         String
   city          String
-  phone         String
+  phone         String   @unique
   Pets          Pet[]
   created_at    DateTime @default(now())
 }
