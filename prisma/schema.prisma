@@ -30,13 +30,13 @@ model Pet {
 
 model Org {
   id            String   @id @default(uuid())
-  name          String[]
+  name          String
   email         String   @unique
   password_hash String
   address       String
   state         String
   city          String
-  phone         String
+  phone         String   @unique
   Pets          Pet[]
   created_at    DateTime @default(now())
 }
