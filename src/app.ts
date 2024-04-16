@@ -2,9 +2,22 @@ import fastify from "fastify";
 import { env } from "./env";
 import { ZodError } from "zod";
 import { orgsRoutes } from "./http/controllers/org/routes";
+import fastifyCookie from "@fastify/cookie";
+import fastifyJwt from "@fastify/jwt";
 
 export const app = fastify();
 
+app.register(fastifyCookie);
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'refreshToken',
+    signed: false,
+  },
+  sign: {
+    expiresIn: '10m'
+  }
+})
 app.register(orgsRoutes);
 
 app.setErrorHandler((error, _, reply) => {
