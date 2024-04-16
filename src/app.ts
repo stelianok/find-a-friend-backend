@@ -1,9 +1,10 @@
 import fastify from "fastify";
 import { env } from "./env";
 import { ZodError } from "zod";
-import { orgsRoutes } from "./http/controllers/org/routes";
+import { orgsRoutes } from "./http/controllers/orgs/routes";
 import fastifyCookie from "@fastify/cookie";
 import fastifyJwt from "@fastify/jwt";
+import { petsRoutes } from "./http/controllers/pets/routes";
 
 export const app = fastify();
 
@@ -18,7 +19,9 @@ app.register(fastifyJwt, {
     expiresIn: '10m'
   }
 })
+
 app.register(orgsRoutes);
+app.register(petsRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
