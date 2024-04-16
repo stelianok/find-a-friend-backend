@@ -21,8 +21,6 @@ model Pet {
   energy_level       Int
   size               String
   independence_level String
-  state              String
-  city               String
   Org                Org      @relation(fields: [org_id], references: [id])
   org_id             String
   created_at         DateTime @default(now())
