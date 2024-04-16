@@ -41,7 +41,7 @@ describe("Register new pet use case", () => {
       energy_level: 3,
       independence_level: "high",
       size: "big",
-      org,
+      org_id: org.id,
     });
 
     expect(pet.id).toEqual(expect.any(String));
@@ -67,10 +67,9 @@ describe("Register new pet use case", () => {
       energy_level: 3,
       independence_level: "high",
       size: "big",
-      org,
+      org_id: org.id,
     });
 
     expect(pet.id).toEqual(expect.any(String));
   })
-
 })

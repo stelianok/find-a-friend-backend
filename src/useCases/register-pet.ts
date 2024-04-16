@@ -1,6 +1,6 @@
 import { OrgsRepository } from "@/repositories/orgs-repository";
 import { PetsRepository } from "@/repositories/pets-repository";
-import { Org, Pet } from "@prisma/client";
+import { Pet } from "@prisma/client";
 import { ResourceNotFoundError } from "./error/resource-not-found-error";
 
 interface RegisterPetUseCaseRequest {
@@ -10,7 +10,7 @@ interface RegisterPetUseCaseRequest {
   energy_level: number;
   size: string;
   independence_level: string;
-  org: Org;
+  org_id: string;
 }
 
 interface RegisterPetUseCaseResponse {
@@ -22,8 +22,8 @@ export class RegisterPetUseCase {
     private orgsRepository: OrgsRepository,
     private petsRepository: PetsRepository) { }
 
-  async execute({ name, description, age, energy_level, size, independence_level, org }: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse> {
-    const doesOrgExists = this.orgsRepository.findById(org.id);
+  async execute({ name, description, age, energy_level, size, independence_level, org_id }: RegisterPetUseCaseRequest): Promise<RegisterPetUseCaseResponse> {
+    const doesOrgExists = this.orgsRepository.findById(org_id);
 
     if (!doesOrgExists) {
       throw new ResourceNotFoundError();
@@ -38,7 +38,7 @@ export class RegisterPetUseCase {
       independence_level,
       Org: {
         connect: {
-          id: org.id
+          id: org_id
         }
       }
     });
