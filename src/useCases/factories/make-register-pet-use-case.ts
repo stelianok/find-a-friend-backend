@@ -3,7 +3,7 @@ import PrismaPetsRepository from "@/repositories/prisma/prisma-pets-repository";
 
 import { RegisterPetUseCase } from "../register-pet";
 
-export function makeRegisterOrgUseCase() {
+export function makeRegisterPetUseCase() {
   const orgsRepository = new PrismaOrgsRepository();
   const petsRepository = new PrismaPetsRepository();
 
