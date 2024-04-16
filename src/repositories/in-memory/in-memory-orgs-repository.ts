@@ -2,9 +2,7 @@ import { Org, Prisma } from "@prisma/client";
 import { OrgsRepository } from "../orgs-repository";
 
 export class InMemoryOrgsRepository implements OrgsRepository {
-
-
-  public orgs: Org[] = [];
+  private orgs: Org[] = [];
 
   async create(data: Prisma.OrgCreateInput) {
     const org = {
