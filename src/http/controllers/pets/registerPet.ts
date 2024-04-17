@@ -2,11 +2,9 @@ import { makeRegisterPetUseCase } from "@/useCases/factories/make-register-pet-u
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-interface OrgParams {
-  orgId: string;
-}
-// /orgId/pets/
-export async function registerPet(request: FastifyRequest<{ Params: OrgParams }>, reply: FastifyReply) {
+type OrgParams = FastifyRequest<{ Params: { orgId: string } }>;
+
+export async function registerPet(request: OrgParams, reply: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string().max(256),
     description: z.string().max(800),
