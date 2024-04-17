@@ -5,7 +5,6 @@ import { InMemoryOrgsRepository } from "@/repositories/in-memory/in-memory-orgs-
 import { InMemoryPetsRepository } from "@/repositories/in-memory/in-memory-pets-repository";
 
 import { RegisterPetUseCase } from "./register-pet";
-import { ResourceNotFoundError } from "./error/resource-not-found-error";
 
 let orgsRepository: InMemoryOrgsRepository;
 let petsRepository: InMemoryPetsRepository;

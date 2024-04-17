@@ -1,8 +1,19 @@
 import { Pet, Prisma } from "@prisma/client";
 import { PetsRepository } from "../pets-repository";
 
+interface PetWithOrgInfo extends Pet {
+  Org: Prisma.OrgCreateNestedOneWithoutPetsInput
+}
 export class InMemoryPetsRepository implements PetsRepository {
-  private pets: Pet[] = [];
+  private pets: PetWithOrgInfo[] = [];
+
+  async findManyInCity(city: string) {
+    const petsInCity = this.pets.filter((pet) => (
+      pet.Org.connect?.city == city
+    ))
+
+    return petsInCity;
+  }
 
   async create(data: Prisma.PetCreateInput) {
     if (!data.description) {
@@ -21,6 +32,7 @@ export class InMemoryPetsRepository implements PetsRepository {
       energy_level: data.energy_level,
       size: data.size,
       independence_level: data.independence_level,
+      Org: data.Org,
       org_id: data.Org.connect.id,
       created_at: new Date()
     }

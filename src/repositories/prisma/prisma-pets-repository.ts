@@ -9,4 +9,18 @@ export default class PrismaPetsRepository implements PetsRepository {
 
     return pet;
   }
+  async findManyInCity(city: string) {
+    const pets = await prisma.pet.findMany({
+      where: {
+        Org: {
+          city: city,
+        }
+      },
+      include: {
+        Org: true
+      }
+    });
+
+    return pets;
+  }
 }
