@@ -8,6 +8,6 @@ export async function verifyJWT(
     await request.jwtVerify()
   }
   catch (err) {
-    return reply.status(401).send({ message: 'Unauthorized.' });
+    return await reply.status(401).send({ message: 'Unauthorized.' });
   }
 }
