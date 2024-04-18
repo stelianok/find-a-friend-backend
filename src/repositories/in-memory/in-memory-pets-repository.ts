@@ -1,5 +1,5 @@
 import { Pet, Prisma } from "@prisma/client";
-import { PetsRepository } from "../pets-repository";
+import { PetFilters, PetsRepository } from "../pets-repository";
 
 interface PetWithOrgInfo extends Pet {
   Org: Prisma.OrgCreateNestedOneWithoutPetsInput
@@ -7,10 +7,23 @@ interface PetWithOrgInfo extends Pet {
 export class InMemoryPetsRepository implements PetsRepository {
   private pets: PetWithOrgInfo[] = [];
 
-  async findManyInCity(city: string) {
+  async findManyInCity(city: string, filters?: PetFilters) {
     const petsInCity = this.pets.filter((pet) => (
       pet.Org.connect?.city == city
     ))
+
+    if (filters) {
+      const filteredPetList = petsInCity.filter((pet) => {
+        return (
+          (!filters.age || pet.age === filters.age) &&
+          (!filters.energy_level || pet.energy_level === filters.energy_level) &&
+          (!filters.independence_level || pet.independence_level === filters.independence_level) &&
+          (!filters.size || pet.size === filters.size)
+        )
+      })
+
+      return filteredPetList;
+    }
 
     return petsInCity;
   }
