@@ -205,16 +205,6 @@ describe('List pets use Case', () => {
       phone: '55119999999999'
     })
 
-    const orgInAnotherCity = await orgsRepository.create({
-      name: 'Org in another city',
-      email: 'org@org.com',
-      password_hash: password_hash,
-      address: 'Street real address',
-      state: 'ST',
-      city: 'unrelated city',
-      phone: '55129999999999'
-    })
-
     const filters: PetFilters = {
       age: "young",
     }
@@ -254,19 +244,6 @@ describe('List pets use Case', () => {
       size: "big",
       Org: {
         connect: orgInCity,
-      },
-      created_at: new Date(),
-    })
-
-    await petsRepository.create({
-      name: "Dog in another city",
-      age: "adult",
-      description: "desc",
-      energy_level: "average",
-      independence_level: "low",
-      size: "big",
-      Org: {
-        connect: orgInAnotherCity,
       },
       created_at: new Date(),
     })
