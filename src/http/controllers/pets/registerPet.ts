@@ -8,8 +8,8 @@ export async function registerPet(request: OrgParams, reply: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string().max(256),
     description: z.string().max(800),
-    age: z.number().int(),
-    energy_level: z.number().int(),
+    age: z.string(),
+    energy_level: z.string(),
     size: z.string().max(500),
     independence_level: z.string().max(120),
   })
