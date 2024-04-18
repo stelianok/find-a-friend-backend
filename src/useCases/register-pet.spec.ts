@@ -35,9 +35,9 @@ describe("Register new pet use case", () => {
 
     const { pet } = await registerPetUseCase.execute({
       name: "Doggo",
-      age: 2,
+      age: "adult",
       description: "yippee",
-      energy_level: 3,
+      energy_level: "high",
       independence_level: "high",
       size: "big",
       org_id: org.id,
@@ -62,8 +62,8 @@ describe("Register new pet use case", () => {
 
     const { pet } = await registerPetUseCase.execute({
       name: "Doggo",
-      age: 2,
-      energy_level: 3,
+      age: "old",
+      energy_level: "low",
       independence_level: "high",
       size: "big",
       org_id: org.id,

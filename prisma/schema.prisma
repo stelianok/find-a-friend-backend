@@ -13,12 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// age - young, adult, old.
+// energy - low, average, high
+// size - small, average, big
+// independence_level -  low, medium,  high
 model Pet {
   id                 String   @id @default(uuid())
   name               String
   description        String?
-  age                Int
-  energy_level       Int
+  age                String
+  energy_level       String
   size               String
   independence_level String
   Org                Org      @relation(fields: [org_id], references: [id])
