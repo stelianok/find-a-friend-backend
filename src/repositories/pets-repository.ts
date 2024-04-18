@@ -10,5 +10,7 @@ export interface PetFilters {
 
 export interface PetsRepository {
   create(data: Prisma.PetCreateInput): Promise<Pet>
+  findById(id: string): Promise<Pet | null>
   findManyInCity(city: string, filters?: PetFilters): Promise<Pet[]>
+
 }
