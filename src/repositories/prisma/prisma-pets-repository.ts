@@ -11,7 +11,24 @@ export default class PrismaPetsRepository implements PetsRepository {
   }
 
   async findById(id: string) {
-    const pet = await prisma.pet.findUnique({ where: { id }, include: { Org: true } });
+    const pet = await prisma.pet.findUnique(
+      {
+        where: { id },
+        include: {
+          Org: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              address: true,
+              state: true,
+              city: true,
+              phone: true
+            }
+          }
+        },
+
+      });
 
     return pet;
   }
