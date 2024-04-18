@@ -43,9 +43,9 @@ describe('List pets use Case', () => {
 
     await petsRepository.create({
       name: "dog1",
-      age: 2,
+      age: "young",
       description: "desc",
-      energy_level: 3,
+      energy_level: "average",
       independence_level: "low",
       size: "big",
       Org: {
@@ -56,9 +56,9 @@ describe('List pets use Case', () => {
 
     await petsRepository.create({
       name: "dog2",
-      age: 2,
+      age: "young",
       description: "desc",
-      energy_level: 3,
+      energy_level: "high",
       independence_level: "low",
       size: "big",
       Org: {
@@ -69,9 +69,9 @@ describe('List pets use Case', () => {
 
     await petsRepository.create({
       name: "dog3",
-      age: 2,
+      age: "young",
       description: "desc",
-      energy_level: 3,
+      energy_level: "high",
       independence_level: "low",
       size: "big",
       Org: {
@@ -82,9 +82,9 @@ describe('List pets use Case', () => {
 
     await petsRepository.create({
       name: "Dog in another city",
-      age: 2,
+      age: "young",
       description: "desc",
-      energy_level: 3,
+      energy_level: "average",
       independence_level: "low",
       size: "big",
       Org: {
