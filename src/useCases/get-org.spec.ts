@@ -30,7 +30,7 @@ describe('Get organization use case', () => {
       id: createdOrg.id,
     });
 
-    expect(org.id).toEqual(expect.any((String)));
+    expect(org.id).toEqual(expect.any(String));
     expect(org.name).toEqual('Org');
   });
 
